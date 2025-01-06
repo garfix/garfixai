@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "/home/patrick/Public/richard"
+    ],
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "/home/patrick/Public/richard:${env:PYTHONPATH}",
+        "PATH": "/home/patrick/Public/richard:${env:PATH}"
+    }
+}
