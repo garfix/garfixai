@@ -1,1 +1,4 @@
 ../richard
+
+# used by MusicModule
+pygame

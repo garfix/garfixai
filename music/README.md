@@ -1,1 +1,1 @@
-The play_sound function was based the `playsound` library: https://pypi.org/project/playsound/
+The play_sound function uses `pygame` library: https://pypi.org/project/pygame/

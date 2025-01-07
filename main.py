@@ -34,9 +34,19 @@ def talk_to_computer():
         TryFirst(responder)
     ])
 
-    request = SentenceRequest("Play some A-ha")
-    response = pipeline.enter(request)
-    print(response)
+    while True:
+
+        text = input('> ')
+
+        if text == "exit":
+            break
+
+        if text == "aha":
+            text = "Play some A-ha"
+
+        request = SentenceRequest(text)
+        response = pipeline.enter(request)
+        print(response)
 
 if __name__ == '__main__':
     talk_to_computer()
