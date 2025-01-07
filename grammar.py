@@ -10,14 +10,14 @@ def get_grammar():
         },
         {
             "syn": "command() -> 'play' 'some' artist()",
-            "sem": lambda artist: [('play', artist)],
+            "sem": lambda artist: [('play_music', artist)],
         },
         {
             "syn": "command() -> 'stop'",
-            "sem": lambda: [('stop',)],
+            "sem": lambda: [('stop_music',)],
         },
         {
-            "syn": "artist() -> /[\w]+(-[\w]+)*/",
+            "syn": "artist() -> /[\w]+([ -.][\w]+)*[.]?/",
             "sem": lambda artist: artist,
         },
     ]

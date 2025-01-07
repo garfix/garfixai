@@ -1,2 +1,2 @@
-Using Richard! as a way to talk to my computer.
+Using Richard! to talk to my computer.
 

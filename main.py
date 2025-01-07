@@ -1,3 +1,4 @@
+from configuration import get_config
 from music.MusicModule import MusicModule
 from richard.block.TryFirst import TryFirst
 from richard.module.BasicSentenceContext import BasicSentenceContext
@@ -14,7 +15,8 @@ from grammar import get_grammar
 def talk_to_computer():
 
     sentence_context = BasicSentenceContext()
-    music_module = MusicModule()
+    config = get_config()
+    music_module = MusicModule(config)
 
     model = Model([
         sentence_context,
