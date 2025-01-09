@@ -1,15 +1,21 @@
 import os
 import random
 import re
-from pygame import mixer
+import pygame
+
+
+def sound_init():
+    pygame.init()
+    pygame.mixer.init()
+
 
 def play_sound(file_path):
-    mixer.music.load(file_path)
-    mixer.music.play()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play()
 
 
 def stop_play():
-    mixer.music.stop()
+    pygame.mixer.music.stop()
 
 
 def play_artist(artist: str, music_folder: str):
@@ -21,7 +27,7 @@ def play_artist(artist: str, music_folder: str):
                     song_name
     """
 
-    mixer.music.stop()
+    pygame.mixer.music.stop()
 
     path = os.path.expanduser(music_folder)
     artists = os.listdir(path)
@@ -54,6 +60,8 @@ def play_artist(artist: str, music_folder: str):
     song = random.choice(songs)
     path = f"{path}/{song}"
     play_sound(path)
+
+    print(f"Playing {song} from the album {album} by {artist}")
 
 
 def simplify_name(name) -> str:
