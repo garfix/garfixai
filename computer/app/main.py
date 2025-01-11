@@ -10,7 +10,32 @@ from richard.core.Model import Model
 from richard.entity.SentenceRequest import SentenceRequest
 from richard.core.Pipeline import Pipeline
 from richard.processor.parser.BasicParser import BasicParser
-from src.app.grammar import get_grammar
+from computer.app.grammar import get_grammar
+
+
+def create_pipeline():
+    sentence_context = BasicSentenceContext()
+    config = get_config()
+    music_module = MusicModule(config)
+
+    model = Model([
+        sentence_context,
+        music_module
+    ])
+
+    grammar = get_grammar()
+    parser = BasicParser(SimpleGrammarRulesParser().parse(grammar))
+    composer = SemanticComposer(parser)
+    executor = AtomExecutor(composer, model)
+    responder = SimpleResponder(model, executor)
+
+    pipeline = Pipeline([
+        TryFirst(parser),
+        TryFirst(composer),
+        TryFirst(executor),
+        TryFirst(responder)
+    ])
+
 
 def talk_to_computer():
 

@@ -1,5 +1,7 @@
 import socket
 import threading
+from src.app.main import create_pipeline
+from richard.entity.SentenceRequest import SentenceRequest
 
 class TextService:
     def __init__(self, host='localhost', port=8642):
@@ -12,6 +14,7 @@ class TextService:
             "status": self.get_status,
             "help": self.show_help,
         }
+        self.richard = create_pipeline()
 
     def start_service(self):
         if self.running:
@@ -40,10 +43,17 @@ class TextService:
                     if not data:
                         break
 
-                    if data in self.commands:
-                        response = self.commands[data]()
-                    else:
-                        response = f"Unknown command: {data}. Type 'help' for available commands."
+                    request = SentenceRequest(data)
+                    response = self.pipeline.enter(request)
+                    # print(response)
+
+
+                    # if data in self.commands:
+                    #     response = self.commands[data]()
+                    # else:
+                    #     response = f"Unknown command: {data}. Type 'help' for available commands."
+
+
 
                     sock.sendall((response + "\n").encode('utf-8'))
 
@@ -70,6 +80,6 @@ class TextService:
                     print("Shutting down the server.")
                     break
 
-if __name__ == "__main__":
-    service = TextService()
-    service.start()
+# if __name__ == "__main__":
+#     service = TextService()
+#     service.start()

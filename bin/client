@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+
+from src.client.client import start_client
+
+start_client()
+
+
