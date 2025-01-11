@@ -20,3 +20,42 @@ source venv/bin/activate
 server
 ~~~
 
+## Command line client
+
+You can talk to the computer while you are doing other things on the command line.
+Just preceed each request you want to make the the computer with the letter "r".
+The computer's reply will be prefixed by "C:"
+
+~~~bash
+source venv/bin/activate
+r <my request to the computer>
+~~~
+
+For example
+
+~~~bash
+r play some Supertramp
+C: OK
+
+r stop
+C: OK
+
+r what is 1+1
+C: 2
+~~~
+
+## Development
+
+When developing, you want to have change take effect immediately, without running `pip install i` everytime.
+
+To start the server:
+
+~~~bash
+python3 src/server/server.py
+~~~
+
+To start a client:
+
+~~~bash
+python3 src/client/cli.py <my request to the computer>
+~~~
