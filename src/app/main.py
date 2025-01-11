@@ -10,7 +10,7 @@ from richard.core.Model import Model
 from richard.entity.SentenceRequest import SentenceRequest
 from richard.core.Pipeline import Pipeline
 from richard.processor.parser.BasicParser import BasicParser
-from grammar import get_grammar
+from src.app.grammar import get_grammar
 
 def talk_to_computer():
 

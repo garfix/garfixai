@@ -1,0 +1,6 @@
+#!/home/patrick/Public/computer/venv/bin/python3
+
+from src.server.server import TextService
+
+TextService().start()
+
