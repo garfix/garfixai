@@ -1,4 +1,4 @@
-from music.play_sound import play_artist, play_sound, sound_init, stop_play
+from .play_sound import play_artist, sound_init, stop_play
 from richard.entity.Relation import Relation
 from richard.interface.SomeModule import SomeModule
 from richard.type.ExecutionContext import ExecutionContext

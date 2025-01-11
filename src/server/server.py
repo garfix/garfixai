@@ -1,6 +1,6 @@
 import socket
 import threading
-from computer.app.main import create_pipeline
+from app.main import create_pipeline
 from richard.entity.SentenceRequest import SentenceRequest
 
 class TextService:
@@ -14,7 +14,6 @@ class TextService:
             "status": self.get_status,
             "help": self.show_help,
         }
-        self.richard = create_pipeline()
 
     def start_service(self):
         if self.running:
@@ -43,9 +42,11 @@ class TextService:
                     if not data:
                         break
 
+                    self.pipeline = create_pipeline()
+
                     request = SentenceRequest(data)
                     response = self.pipeline.enter(request)
-                    # print(response)
+                    print(response)
 
 
                     # if data in self.commands:

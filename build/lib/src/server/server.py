@@ -1,6 +1,6 @@
 import socket
 import threading
-from src.app.main import create_pipeline
+from computer.app.main import create_pipeline
 from richard.entity.SentenceRequest import SentenceRequest
 
 class TextService:

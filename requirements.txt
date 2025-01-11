@@ -2,3 +2,4 @@
 
 # used by MusicModule
 pygame
+setuptools

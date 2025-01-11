@@ -1,5 +1,5 @@
-from configuration import get_config
-from music.MusicModule import MusicModule
+from module.music.MusicModule import MusicModule
+from app.configuration import get_config
 from richard.block.TryFirst import TryFirst
 from richard.module.BasicSentenceContext import BasicSentenceContext
 from richard.processor.parser.helper.SimpleGrammarRulesParser import SimpleGrammarRulesParser
@@ -10,7 +10,7 @@ from richard.core.Model import Model
 from richard.entity.SentenceRequest import SentenceRequest
 from richard.core.Pipeline import Pipeline
 from richard.processor.parser.BasicParser import BasicParser
-from computer.app.grammar import get_grammar
+from app.grammar import get_grammar
 
 
 def create_pipeline():
@@ -35,6 +35,8 @@ def create_pipeline():
         TryFirst(executor),
         TryFirst(responder)
     ])
+
+    return pipeline
 
 
 def talk_to_computer():
