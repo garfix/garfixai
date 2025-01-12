@@ -1,5 +1,14 @@
 ../richard
 
+setuptools
+python-dotenv
+
 # used by MusicModule
 pygame
-setuptools
+
+# openai example
+openai
+
+# langchain example
+langchain
+langchain-openai

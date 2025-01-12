@@ -1,5 +1,5 @@
-from module.music.MusicModule import MusicModule
-from app.configuration import get_config
+import os
+from app.richard.module.music.MusicModule import MusicModule
 from richard.block.TryFirst import TryFirst
 from richard.module.BasicSentenceContext import BasicSentenceContext
 from richard.processor.parser.helper.SimpleGrammarRulesParser import SimpleGrammarRulesParser
@@ -9,20 +9,21 @@ from richard.processor.semantic_executor.AtomExecutor import AtomExecutor
 from richard.core.Model import Model
 from richard.core.Pipeline import Pipeline
 from richard.processor.parser.BasicParser import BasicParser
-from app.grammar import get_grammar
+from app.richard.module.music.grammar import get_music_grammar
 
 
 def create_pipeline():
     sentence_context = BasicSentenceContext()
-    config = get_config()
-    music_module = MusicModule(config)
+    music_module = MusicModule(os.getenv('MY_MUSIC_FOLDER'))
 
     model = Model([
         sentence_context,
         music_module
     ])
 
-    grammar = get_grammar()
+    grammar = []
+    grammar.extend(get_music_grammar())
+
     parser = BasicParser(SimpleGrammarRulesParser().parse(grammar))
     composer = SemanticComposer(parser)
     executor = AtomExecutor(composer, model)

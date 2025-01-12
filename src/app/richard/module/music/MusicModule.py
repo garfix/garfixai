@@ -5,15 +5,13 @@ from richard.type.ExecutionContext import ExecutionContext
 
 
 class MusicModule(SomeModule):
-    """
-    See https://www.geeksforgeeks.org/play-sound-in-python/
-    """
 
-    config: dict
+    music_folder: str
 
-    def __init__(self, config: dict) -> None:
+
+    def __init__(self, music_folder: str) -> None:
         super().__init__()
-        self.config = config
+        self.music_folder = music_folder
 
         sound_init()
 
@@ -24,7 +22,7 @@ class MusicModule(SomeModule):
     def play(self, values: list, context: ExecutionContext) -> list[list]:
         artist = values[0]
 
-        play_artist(artist, self.config['my_music_folder'])
+        play_artist(artist, self.music_folder)
 
         return [
             [None]

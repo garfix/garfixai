@@ -1,8 +1,8 @@
 import socket
 import threading
 from dotenv import load_dotenv
-from app.main import create_pipeline
-from richard.entity.SentenceRequest import SentenceRequest
+import traceback
+from app.garfixai import GarfixAI
 
 class TextService:
     def __init__(self, host='localhost', port=8642):
@@ -19,14 +19,12 @@ class TextService:
                         break
 
                     # todo: must be initialized just once
-                    self.pipeline = create_pipeline()
-
-                    request = SentenceRequest(data)
-                    response = self.pipeline.enter(request)
-
+                    self.garfixai = GarfixAI()
+                    response = self.garfixai.send(data)
                     sock.sendall((response + "\n").encode('utf-8'))
 
                 except Exception as e:
+                    print(traceback.format_exc())
                     sock.sendall(f"Error: {str(e)}\n".encode('utf-8'))
                     break
 

@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/garfixai.egg-info": true,
+        "venv": true,
+    },
+    "python.autoComplete.extraPaths": [
+        "/home/patrick/Public/richard"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/patrick/Public/richard"
+    ]
+}

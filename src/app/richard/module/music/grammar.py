@@ -1,7 +1,7 @@
 from richard.core.constants import E1, E2, E3, e1, e2, e3
 
 
-def get_grammar():
+def get_music_grammar():
     return [
         {
             "syn": "s() -> command()",
