@@ -2,3 +2,4 @@ venv
 computer.egg-info
 build
 *.pyc
+.env

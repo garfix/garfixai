@@ -1,5 +1,6 @@
 import socket
 import threading
+from dotenv import load_dotenv
 from app.main import create_pipeline
 from richard.entity.SentenceRequest import SentenceRequest
 
@@ -17,6 +18,7 @@ class TextService:
                     if not data:
                         break
 
+                    # todo: must be initialized just once
                     self.pipeline = create_pipeline()
 
                     request = SentenceRequest(data)
@@ -48,6 +50,10 @@ class TextService:
 
 
 def main():
+
+    # Load environment variables from .env file
+    load_dotenv()
+
     TextService().start()
 
 
