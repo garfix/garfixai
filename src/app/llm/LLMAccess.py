@@ -2,6 +2,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
+from transformers import pipeline
 
 
 class LLMAccess:
@@ -31,8 +32,8 @@ class LLMAccess:
         )
 
         chain = prompt | \
-                ChatOpenAI(model="gpt-4o-mini") | \
-                StrOutputParser()
+            ChatOpenAI(model="gpt-4o-mini") | \
+            StrOutputParser()
 
         # Invoke the chain with a question and the memory
         # will track history
@@ -41,11 +42,30 @@ class LLMAccess:
             "history" : self.memory.load_memory_variables({})["history"]
         })
 
-        self.memory.save_context({
-            "question": question
-        }, {
-            "answer": response
-        })
+        self.memory.save_context({"question": question}, {"answer": response})
+
+        # if more then 4 messages, summarize the history
+        if len(self.memory.chat_memory.messages) > 8:
+            self.summarize_history()
 
         return response
 
+
+    def summarize_history(self):
+        long_history = self.memory.load_memory_variables({})["history"]
+
+        # load the model to perform summarization
+        summarizer = pipeline("summarization",
+                            model="facebook/bart-large-cnn")
+        summary = summarizer(long_history,
+                            max_length=150,
+                            min_length=30,
+                            do_sample=False)
+
+        # clear the memory after summarizing
+        self.memory.clear()
+
+        # Save summarized context
+        self.memory.save_context(
+            { "summary": summary[0]['summary_text'] },
+            { "answer": "" })

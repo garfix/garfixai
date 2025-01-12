@@ -6,9 +6,10 @@ python-dotenv
 # used by MusicModule
 pygame
 
-# openai example
-openai
-
-# langchain example
+# LLMAccess
 langchain
 langchain-openai
+# summarize_history
+transformers
+# Either Tensorflow or Pytorch
+torch

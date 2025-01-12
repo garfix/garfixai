@@ -1,4 +1,4 @@
-Using Richard! to talk to my computer.
+My AI that lets me talk to Richard! and to LLM's
 
 ## Installation
 
@@ -10,6 +10,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 pip install -e .
 ~~~
+
+Then copy `.env.example` to `.env` and add your OpenAI API key to it, if you want to use the OpenAI LLMs.
 
 ## Start the server
 
