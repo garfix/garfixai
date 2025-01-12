@@ -11,7 +11,7 @@ class GarfixAI:
     def __init__(self):
         # todo initialize the pipeline here
         self.llm_access = LLMAccess()
-        self.use_richard = True
+        self.use_richard = False
 
     def send(self, message: str):
 

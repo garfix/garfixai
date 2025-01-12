@@ -9,6 +9,7 @@ class GarfixAIService:
     def __init__(self, port: int):
         self.host = 'localhost'
         self.port = port
+        self.garfixai = GarfixAI()
 
 
     def handle_client(self, client_socket):
@@ -19,8 +20,6 @@ class GarfixAIService:
                     if not data:
                         break
 
-                    # todo: must be initialized just once
-                    self.garfixai = GarfixAI()
                     response = self.garfixai.send(data)
                     sock.sendall((response + "\n").encode('utf-8'))
 
