@@ -1,12 +1,13 @@
+import os
 import socket
 import threading
 from dotenv import load_dotenv
 import traceback
 from app.garfixai import GarfixAI
 
-class TextService:
-    def __init__(self, host='localhost', port=8642):
-        self.host = host
+class GarfixAIService:
+    def __init__(self, port: int):
+        self.host = 'localhost'
         self.port = port
 
 
@@ -48,11 +49,12 @@ class TextService:
 
 
 def main():
-
     # Load environment variables from .env file
     load_dotenv()
 
-    TextService().start()
+    port = int(os.getenv('PORT'))
+
+    GarfixAIService(port).start()
 
 
 if __name__ == "__main__":

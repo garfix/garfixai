@@ -1,8 +1,11 @@
+import os
 import socket
 from sys import argv
+from dotenv import load_dotenv
 
-def respond(argv, host='localhost', port=8642):
+def respond(argv: list[str], port: int):
 
+    host = 'localhost'
     request = " ".join(argv[1:])
 
     try:
@@ -23,7 +26,12 @@ def respond(argv, host='localhost', port=8642):
 
 
 def main():
-    respond(argv)
+    # Load environment variables from .env file
+    load_dotenv()
+
+    port = int(os.getenv('PORT'))
+
+    respond(argv, port)
 
 
 if __name__ == "__main__":
