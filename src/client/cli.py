@@ -16,7 +16,7 @@ def respond(argv: list[str], port: int):
             client_socket.sendall(request.encode('utf-8'))
 
             # Receive the response from the server
-            response = client_socket.recv(1024).decode('utf-8')
+            response = client_socket.recv(65535).decode('utf-8')
             print(f"C: {response}")
 
     except ConnectionRefusedError:

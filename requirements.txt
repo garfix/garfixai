@@ -13,3 +13,5 @@ langchain-openai
 transformers
 # Either Tensorflow or Pytorch
 torch
+langchain_community
+langchain_huggingface

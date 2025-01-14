@@ -3,7 +3,7 @@ from langchain import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from transformers import pipeline
-
+from langchain_huggingface import HuggingFaceEndpoint
 
 class LLMAccess:
     # see https://www.codemag.com/Article/2501051/Exploring-LangChain-A-Practical-Approach-to-Language-Models-and-Retrieval-Augmented-Generation-RAG
@@ -31,9 +31,20 @@ class LLMAccess:
             input_variables = ['history', 'question']
         )
 
-        chain = prompt | \
-            ChatOpenAI(model="gpt-4o-mini") | \
-            StrOutputParser()
+        if False:
+
+            chain = prompt | \
+                ChatOpenAI(model="gpt-4o-mini") | \
+                StrOutputParser()
+
+        else:
+
+            hub_llm = HuggingFaceEndpoint(repo_id = 'tiiuae/falcon-7b-instruct',
+                # lower temperature makes the output more deterministic
+                temperature = 0.1
+            )
+
+            cha in = prompt | hub_llm | StrOutputParser()
 
         # Invoke the chain with a question and the memory
         # will track history

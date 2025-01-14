@@ -16,7 +16,7 @@ class GarfixAIService:
         with client_socket as sock:
             while True:
                 try:
-                    data = sock.recv(1024).decode('utf-8').strip()
+                    data = sock.recv(65535).decode('utf-8').strip()
                     if not data:
                         break
 
