@@ -44,7 +44,7 @@ class LLMAccess:
                 temperature = 0.1
             )
 
-            cha in = prompt | hub_llm | StrOutputParser()
+            chain = prompt | hub_llm | StrOutputParser()
 
         # Invoke the chain with a question and the memory
         # will track history
