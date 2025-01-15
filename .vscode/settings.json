@@ -4,9 +4,9 @@
         "venv": true,
     },
     "python.autoComplete.extraPaths": [
-        "/home/patrick/Public/richard"
+        "./venv/lib64/python3.10/site-packages"
     ],
     "python.analysis.extraPaths": [
-        "/home/patrick/Public/richard"
+        "./venv/lib64/python3.10/site-packages"
     ]
 }
