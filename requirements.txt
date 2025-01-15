@@ -15,3 +15,5 @@ transformers
 torch
 langchain_community
 langchain_huggingface
+docarray
+tiktoken
