@@ -6,15 +6,14 @@ def get_music_grammar():
         {
             "syn": "s() -> command()",
             "sem": lambda command: command,
-            "dialog": [("format", "canned"), ("format_canned", "OK")],
         },
         {
             "syn": "command() -> 'play' 'some' artist()",
-            "sem": lambda artist: [('play_music', artist)],
+            "sem": lambda artist: [('intent_play_music', artist)],
         },
         {
             "syn": "command() -> 'stop'",
-            "sem": lambda: [('stop_music',)],
+            "sem": lambda: [('intent_stop_music',)],
         },
         {
             "syn": "artist() -> /[\w]+([ -.][\w]+)*[.]?/",
